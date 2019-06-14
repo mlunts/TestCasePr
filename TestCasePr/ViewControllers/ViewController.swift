@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     let service = Service()
     var upcomingMovies = [Movie]() {
         didSet {
-           
+           upcomingMoviesTable.reloadData()
         }
     }
     var currentMovies = [Movie]() {
@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var currentCollectionView: UICollectionView!
+    
+    @IBOutlet weak var upcomingMoviesTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "nowMovieCell", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "nowMovieCell", for: indexPath) as! MovieCellCollectionViewCell
         cell.movieTitle.text = currentMovies[indexPath.row].title
         cell.posterImage.image = currentMovies[indexPath.row].image
         cell.rateLabel.text = String(currentMovies[indexPath.row].averageVote)
@@ -57,9 +59,21 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
     }
 }
 
-class MovieCell : UICollectionViewCell {
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var posterImage: UIImageView!
+extension ViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !upcomingMovies.isEmpty {
+            return 6
+        } else {
+            return 0
+        }
+    }
     
-    @IBOutlet weak var rateLabel: UILabel!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "upcomingCell", for: indexPath) as! UpcomingMoviesTableViewCell
+        cell.titleLabel.text = upcomingMovies[indexPath.row].title
+        cell.dateLabel.text = upcomingMovies[indexPath.row].releaseDate.dateToString(format: "dd MMM yyyy")
+        return cell
+    }
+    
+    
 }
