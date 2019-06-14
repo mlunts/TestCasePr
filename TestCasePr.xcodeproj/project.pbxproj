@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,10 @@
 		9CA6600F22B39E1700E1C639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6600D22B39E1700E1C639 /* LaunchScreen.storyboard */; };
 		9CA6601A22B39E1700E1C639 /* TestCasePrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6601922B39E1700E1C639 /* TestCasePrTests.swift */; };
 		9CA6602522B39E1700E1C639 /* TestCasePrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6602422B39E1700E1C639 /* TestCasePrUITests.swift */; };
+		9CA6603322B3A02800E1C639 /* Constaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6603222B3A02800E1C639 /* Constaints.swift */; };
+		9CA6603522B3A19B00E1C639 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6603422B3A19B00E1C639 /* Service.swift */; };
+		9CA6603822B3A67000E1C639 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6603722B3A67000E1C639 /* Movie.swift */; };
+		9CA6603B22B3A7E700E1C639 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6603A22B3A7E700E1C639 /* StringExtension.swift */; };
 		D816FDB43DE82FFC69DA24FF /* Pods_TestCasePrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745B6AECE029826DEE1FAC31 /* Pods_TestCasePrTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 		9CA6602022B39E1700E1C639 /* TestCasePrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCasePrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA6602422B39E1700E1C639 /* TestCasePrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCasePrUITests.swift; sourceTree = "<group>"; };
 		9CA6602622B39E1700E1C639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CA6603222B3A02800E1C639 /* Constaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constaints.swift; sourceTree = "<group>"; };
+		9CA6603422B3A19B00E1C639 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		9CA6603722B3A67000E1C639 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		9CA6603A22B3A7E700E1C639 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		DDE7ECB67B21068694015ED2 /* Pods-TestCasePrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCasePrTests.debug.xcconfig"; path = "Target Support Files/Pods-TestCasePrTests/Pods-TestCasePrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C1362E77D83650D3C58971 /* Pods-TestCasePrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCasePrUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestCasePrUITests/Pods-TestCasePrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,7 +107,6 @@
 				E1C1362E77D83650D3C58971 /* Pods-TestCasePrUITests.debug.xcconfig */,
 				7F4D9146A9591B670C361553 /* Pods-TestCasePrUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,6 +138,9 @@
 				9CA6600422B39E1600E1C639 /* AppDelegate.swift */,
 				9CA6600622B39E1600E1C639 /* ViewController.swift */,
 				9CA6600822B39E1600E1C639 /* Main.storyboard */,
+				9CA6603422B3A19B00E1C639 /* Service.swift */,
+				9CA6603922B3A7D900E1C639 /* Extensions */,
+				9CA6603622B3A65F00E1C639 /* Model */,
 				9CA6600B22B39E1700E1C639 /* Assets.xcassets */,
 				9CA6600D22B39E1700E1C639 /* LaunchScreen.storyboard */,
 				9CA6601022B39E1700E1C639 /* Info.plist */,
@@ -154,6 +164,23 @@
 				9CA6602622B39E1700E1C639 /* Info.plist */,
 			);
 			path = TestCasePrUITests;
+			sourceTree = "<group>";
+		};
+		9CA6603622B3A65F00E1C639 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CA6603722B3A67000E1C639 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CA6603922B3A7D900E1C639 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CA6603222B3A02800E1C639 /* Constaints.swift */,
+				9CA6603A22B3A7E700E1C639 /* StringExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B63E264B3D7C2C87CFCDEEA8 /* Frameworks */ = {
@@ -387,8 +414,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA6603322B3A02800E1C639 /* Constaints.swift in Sources */,
+				9CA6603B22B3A7E700E1C639 /* StringExtension.swift in Sources */,
+				9CA6603522B3A19B00E1C639 /* Service.swift in Sources */,
 				9CA6600722B39E1600E1C639 /* ViewController.swift in Sources */,
 				9CA6600522B39E1600E1C639 /* AppDelegate.swift in Sources */,
+				9CA6603822B3A67000E1C639 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

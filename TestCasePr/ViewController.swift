@@ -10,11 +10,33 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let service = Service()
+    var upcomingMovies = [Movie]() {
+        didSet {
+            
+        }
+    }
+    var currentMovies = [Movie]() {
+        didSet {
+           
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        getMovies()
+        
+     
     }
 
-
+    private func getMovies() {
+        service.fetchMovies(url: UPCOMING_URL) { (movieList, success) in
+            self.upcomingMovies = movieList
+        }
+        service.fetchMovies(url: NOWPLAYING_URL) { (movieList, success) in
+            self.currentMovies = movieList
+        }
+    }
 }
 
