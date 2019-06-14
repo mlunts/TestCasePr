@@ -9,28 +9,46 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    let service = Service()
-    var upcomingMovies = [Movie]() {
+    
+    private let service = Service()
+    private var upcomingMovies = [Movie]() {
         didSet {
-           upcomingMoviesTable.reloadData()
-        }
-    }
-    var currentMovies = [Movie]() {
-        didSet {
-           currentCollectionView.reloadData()
+            upcomingMoviesTable.reloadData()
         }
     }
     
+    private var currentMovies = [Movie]() {
+        didSet {
+            currentCollectionView.reloadData()
+            activityIndicator.stopAnimating()
+            allHidden(check: false)
+        }
+    }
+    
+    @IBOutlet weak var exploreView: UIView!
     @IBOutlet weak var currentCollectionView: UICollectionView!
-    
     @IBOutlet weak var upcomingMoviesTable: UITableView!
+    var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setInitialView()
         getMovies()
     }
-
+    
+    private func setInitialView() {
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        allHidden(check: true)
+        view.addSubview(activityIndicator)
+        
+    }
+    
+    private func allHidden(check: Bool) {
+        exploreView.isHidden = check
+    }
+    
     private func getMovies() {
         service.fetchMovies(url: UPCOMING_URL) { (movieList, success) in
             self.upcomingMovies = movieList
@@ -39,12 +57,23 @@ class ViewController: UIViewController {
             self.currentMovies = movieList
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! MoviesListViewController
+        if (segue.identifier == "goToCurrentList") {
+            vc.list = currentMovies
+            vc.titleView = "Now Playing"
+        } else if segue.identifier == "goToComingSoonList" {
+            vc.list = upcomingMovies
+            vc.titleView = "Coming Soon"
+        }
+    }
 }
 
 extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if !currentMovies.isEmpty {
-        return 5
+            return 5
         } else {
             return 0
         }
@@ -74,6 +103,4 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = upcomingMovies[indexPath.row].releaseDate.dateToString(format: "dd MMM yyyy")
         return cell
     }
-    
-    
 }
