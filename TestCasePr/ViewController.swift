@@ -23,12 +23,10 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var currentCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         getMovies()
-        
-     
     }
 
     private func getMovies() {
@@ -54,6 +52,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "nowMovieCell", for: indexPath) as! MovieCell
         cell.movieTitle.text = currentMovies[indexPath.row].title
         cell.posterImage.image = currentMovies[indexPath.row].image
+        cell.rateLabel.text = String(currentMovies[indexPath.row].averageVote)
         return cell
     }
 }
@@ -62,4 +61,5 @@ class MovieCell : UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var posterImage: UIImageView!
     
+    @IBOutlet weak var rateLabel: UILabel!
 }
