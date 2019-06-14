@@ -30,11 +30,10 @@ class Movie: NSObject {
         self.title = title
         self.adult = adult.toBool()
         self.overview = overview
-       
         self.releaseDate = releaseString.toDate(format: "YYYY-MM-dd")
         self.averageVote = averageVote
         super.init()
-         self.image = getImageFromURL(url: "https://image.tmdb.org/t/p/original/\(image)")
+        self.image = getImageFromURL(url: "https://image.tmdb.org/t/p/original/\(image)")
     }
     
     private func getImageFromURL(url: String) -> UIImage {
@@ -47,5 +46,6 @@ class Movie: NSObject {
         let image = UIImage(data: imageData)!
         return image
     }
+    
     
 }
