@@ -13,7 +13,7 @@ class Movie: NSObject {
     var title : String
     var adult : Bool
     var overview : String
-    var image : URL!
+    var image : UIImage!
     var releaseDate : Date!
     var averageVote : Double
     
@@ -30,11 +30,22 @@ class Movie: NSObject {
         self.title = title
         self.adult = adult.toBool()
         self.overview = overview
-        self.image = URL(string: "https://image.tmdb.org/t/p/original/\(image)")
+       
         self.releaseDate = releaseString.toDate(format: "YYYY-MM-dd")
         self.averageVote = averageVote
+        super.init()
+         self.image = getImageFromURL(url: "https://image.tmdb.org/t/p/original/\(image)")
     }
     
-    
+    private func getImageFromURL(url: String) -> UIImage {
+        let url = URL(string: url)!
+        let data = try? Data(contentsOf: url)
+
+        guard let imageData = data else {
+            return UIImage(named: "no-image.jpg")!
+        }
+        let image = UIImage(data: imageData)!
+        return image
+    }
     
 }
