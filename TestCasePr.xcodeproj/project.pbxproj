@@ -146,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA6600422B39E1600E1C639 /* AppDelegate.swift */,
-				9CA6600822B39E1600E1C639 /* Main.storyboard */,
 				9CA6603422B3A19B00E1C639 /* Service.swift */,
 				9CA6603C22B420F800E1C639 /* ViewControllers */,
 				9CA6603D22B4211000E1C639 /* View */,
@@ -207,6 +206,7 @@
 		9CA6603D22B4211000E1C639 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CA6600822B39E1600E1C639 /* Main.storyboard */,
 				9CA6604022B4216500E1C639 /* MovieCellCollectionViewCell.swift */,
 				9CA6604322B42B4D00E1C639 /* UpcomingMoviesTableViewCell.swift */,
 				9CA6604922B4307B00E1C639 /* MovieTableViewCell.swift */,
@@ -632,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7BV7G443SR;
 				INFOPLIST_FILE = TestCasePr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7BV7G443SR;
 				INFOPLIST_FILE = TestCasePr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

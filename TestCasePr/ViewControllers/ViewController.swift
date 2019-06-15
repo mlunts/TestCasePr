@@ -28,7 +28,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var exploreView: UIView!
     @IBOutlet weak var currentCollectionView: UICollectionView!
     @IBOutlet weak var upcomingMoviesTable: UITableView!
-    var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,8 @@ class ViewController: UIViewController {
     }
     
     private func setInitialView() {
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicator.startAnimating()
         allHidden(check: true)
-        view.addSubview(activityIndicator)
-        
     }
     
     private func allHidden(check: Bool) {
@@ -73,7 +70,7 @@ class ViewController: UIViewController {
 extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if !currentMovies.isEmpty {
-            return 5
+            return 6
         } else {
             return 0
         }
@@ -91,7 +88,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !upcomingMovies.isEmpty {
-            return 6
+            return 4
         } else {
             return 0
         }
