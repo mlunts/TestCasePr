@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Movie: NSObject {
-    var id : Int
-    var title : String
-    var adult : Bool
-    var overview : String
-    var image : UIImage!
-    var releaseDate : Date!
-    var averageVote : Double
+    public var id : Int
+    public var title : String
+    public var adult : Bool
+    public var overview : String
+    public var image : UIImage!
+    public var backgrImage : UIImage!
+    public var releaseDate : Date!
+    public var averageVote : Double
+    public var runtime : Int!
+    public var tagLine : String!
+    public var genres = [String]()
     
     override init() {
         self.id = 0
@@ -33,13 +38,13 @@ class Movie: NSObject {
         self.releaseDate = releaseString.toDate(format: "YYYY-MM-dd")
         self.averageVote = averageVote
         super.init()
-        self.image = getImageFromURL(url: "https://image.tmdb.org/t/p/original/\(image)")
+        self.image = getImageFromURL(url: "\(IMAGE_URL)\(image)")
     }
     
-    private func getImageFromURL(url: String) -> UIImage {
+    public func getImageFromURL(url: String) -> UIImage {
         let url = URL(string: url)!
         let data = try? Data(contentsOf: url)
-
+        
         guard let imageData = data else {
             return UIImage(named: "no-image.jpg")!
         }
