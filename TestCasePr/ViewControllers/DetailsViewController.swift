@@ -10,28 +10,54 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var selectedMovie = Movie()
+    public var selectedMovie = Movie()
+    private var service = Service()
     
     @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tagLineLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var genresView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-updateUI()
+
+        service.getMovieByID(selectedMovie: selectedMovie) { (movie, true) in
+            self.selectedMovie = movie
+            print(movie.runtime)
+            self.updateUI()
+        }
         // Do any additional setup after loading the view.
     }
     
     private func updateUI() {
-        posterImage.image = selectedMovie.image
-        navigationItem.title = selectedMovie.title
+        genresView.reloadData()
+        posterImage.image = selectedMovie.backgrImage
+        titleLabel.text = selectedMovie.title
+        tagLineLabel.text = selectedMovie.tagLine
+        releaseDateLabel.text = selectedMovie.releaseDate.dateToString(format: "MMMM d, YYYY")
+        if selectedMovie.averageVote == 0 {
+            rateLabel.text = "No votes yet"
+        } else {
+            rateLabel.text = String(selectedMovie.averageVote)
+        }
     }
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension DetailsViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedMovie.genres.count
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! GenreCollectionViewCell
+        cell.genreLabel.text = selectedMovie.genres[indexPath.row]
+        
+        return cell
+    }
+    
+    
 }

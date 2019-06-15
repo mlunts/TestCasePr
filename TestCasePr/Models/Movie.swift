@@ -20,6 +20,7 @@ class Movie: NSObject {
     public var averageVote : Double
     public var runtime : Int!
     public var tagLine : String!
+    public var genres = [String]()
     
     override init() {
         self.id = 0

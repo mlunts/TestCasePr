@@ -41,7 +41,11 @@ class Service: NSObject {
             response in
             if response.result.isSuccess {
                 let json : JSON = JSON(response.result.value!)
-               print("\(IMAGE_URL)\(json["backdrop_path"].stringValue)")
+               
+                for i in 0..<json["genres"].count {
+                    movie.genres.append(json["genres"][i]["name"].stringValue)
+                }
+                
                 movie.runtime = json["runtime"].intValue
                 movie.backgrImage = movie.getImageFromURL(url: "\(IMAGE_URL)\(json["backdrop_path"].stringValue)")
                 movie.tagLine = json["tagline"].stringValue
