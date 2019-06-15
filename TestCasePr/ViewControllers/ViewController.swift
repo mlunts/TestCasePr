@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     private let service = Service()
+    private var selectedMovie = Movie()
+    
     private var upcomingMovies = [Movie]() {
         didSet {
             upcomingMoviesTable.reloadData()
@@ -56,13 +58,17 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! MoviesListViewController
         if (segue.identifier == "goToCurrentList") {
+            let vc = segue.destination as! MoviesListViewController
             vc.list = currentMovies
             vc.titleView = "Now Playing"
         } else if segue.identifier == "goToComingSoonList" {
+            let vc = segue.destination as! MoviesListViewController
             vc.list = upcomingMovies
             vc.titleView = "Coming Soon"
+        } else if segue.identifier == "goToDetailsFromExplore" {
+            let detailsVC = segue.destination as! DetailsViewController
+            detailsVC.selectedMovie = selectedMovie
         }
     }
 }
@@ -83,6 +89,11 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
         cell.rateLabel.text = String(currentMovies[indexPath.row].averageVote)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedMovie = currentMovies[indexPath.row]
+        performSegue(withIdentifier: "goToDetailsFromExplore", sender: nil)
+    }
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
@@ -99,5 +110,10 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = upcomingMovies[indexPath.row].title
         cell.dateLabel.text = upcomingMovies[indexPath.row].releaseDate.dateToString(format: "dd MMM yyyy")
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMovie = upcomingMovies[indexPath.row]
+        performSegue(withIdentifier: "goToDetailsFromExplore", sender: nil)
     }
 }

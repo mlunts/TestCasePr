@@ -25,6 +25,7 @@
 		9CA6604622B42C8300E1C639 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6604522B42C8300E1C639 /* DateExtension.swift */; };
 		9CA6604822B42F7900E1C639 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6604722B42F7900E1C639 /* MoviesListViewController.swift */; };
 		9CA6604A22B4307B00E1C639 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6604922B4307B00E1C639 /* MovieTableViewCell.swift */; };
+		9CBEA3E222B4FCC10039D5D0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBEA3E122B4FCC10039D5D0 /* DetailsViewController.swift */; };
 		D816FDB43DE82FFC69DA24FF /* Pods_TestCasePrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745B6AECE029826DEE1FAC31 /* Pods_TestCasePrTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		9CA6604522B42C8300E1C639 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		9CA6604722B42F7900E1C639 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		9CA6604922B4307B00E1C639 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		9CBEA3E122B4FCC10039D5D0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DDE7ECB67B21068694015ED2 /* Pods-TestCasePrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCasePrTests.debug.xcconfig"; path = "Target Support Files/Pods-TestCasePrTests/Pods-TestCasePrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C1362E77D83650D3C58971 /* Pods-TestCasePrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCasePrUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestCasePrUITests/Pods-TestCasePrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +201,7 @@
 			children = (
 				9CA6600622B39E1600E1C639 /* ViewController.swift */,
 				9CA6604722B42F7900E1C639 /* MoviesListViewController.swift */,
+				9CBEA3E122B4FCC10039D5D0 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				9CA6600522B39E1600E1C639 /* AppDelegate.swift in Sources */,
 				9CA6604A22B4307B00E1C639 /* MovieTableViewCell.swift in Sources */,
 				9CA6603822B3A67000E1C639 /* Movie.swift in Sources */,
+				9CBEA3E222B4FCC10039D5D0 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

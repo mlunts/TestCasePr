@@ -12,13 +12,19 @@ class MoviesListViewController: UIViewController {
     
     public var list = [Movie]()
     public var titleView : String!
-    
+    private var selectedMovie = Movie()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = titleView
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier == "goToDetailsFromList" {
+            let detailsVC = segue.destination as! DetailsViewController
+            detailsVC.selectedMovie = selectedMovie
+        }
+    }
 }
 
 extension MoviesListViewController : UITableViewDataSource, UITableViewDelegate {
@@ -45,5 +51,8 @@ extension MoviesListViewController : UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMovie = list[indexPath.row]
+        performSegue(withIdentifier: "goToDetailsFromList", sender: nil)
+    }
 }
