@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SimpleAnimation
 
 class DetailsViewController: UIViewController {
 
@@ -18,20 +19,30 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var tagLineLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var descrLabel: UILabel!
     @IBOutlet weak var genresView: UICollectionView!
+    @IBOutlet weak var fadeBoxView: UIView!
+    @IBOutlet weak var detailView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initialView(check: true)
         service.getMovieByID(selectedMovie: selectedMovie) { (movie, true) in
             self.selectedMovie = movie
-            print(movie.runtime)
             self.updateUI()
+            self.fadeBoxView.fadeOut()
         }
         // Do any additional setup after loading the view.
     }
     
+    private func initialView(check: Bool) {
+        detailView.isHidden = check
+        posterImage.isHidden = check
+    }
+    
     private func updateUI() {
+        initialView(check: false)
+        
         genresView.reloadData()
         posterImage.image = selectedMovie.backgrImage
         titleLabel.text = selectedMovie.title
@@ -41,6 +52,11 @@ class DetailsViewController: UIViewController {
             rateLabel.text = "No votes yet"
         } else {
             rateLabel.text = String(selectedMovie.averageVote)
+        }
+        if selectedMovie.overview.isEmpty {
+            descrLabel.text = "No information yet"
+        } else {
+            descrLabel.text = selectedMovie.overview
         }
     }
     

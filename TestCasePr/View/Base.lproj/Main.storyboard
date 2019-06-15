@@ -364,6 +364,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-uW-xln">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-e3-z2A">
                                 <rect key="frame" x="0.0" y="88" width="414" height="305"/>
                                 <constraints>
@@ -501,6 +505,25 @@
                                                 <outlet property="delegate" destination="XIY-Zb-du0" id="K2p-m9-5HB"/>
                                             </connections>
                                         </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-gu-1bt">
+                                            <rect key="frame" x="8" y="185.5" width="83" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="83" id="OXt-O2-L70"/>
+                                                <constraint firstAttribute="height" constant="20" id="h2S-3H-9rG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz8-Ci-hhH">
+                                            <rect key="frame" x="8" y="205.5" width="398" height="19.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="398" id="g0m-fC-PKV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="TsN-dk-e0p" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="3Qn-OI-Vfr"/>
@@ -512,17 +535,23 @@
                                         <constraint firstItem="Ni6-1b-usJ" firstAttribute="top" secondItem="TsN-dk-e0p" secondAttribute="bottom" constant="7.5" id="GcW-0Q-XTN"/>
                                         <constraint firstItem="OT2-JY-zAi" firstAttribute="top" secondItem="Ni6-1b-usJ" secondAttribute="bottom" constant="13" id="Ia6-69-W4w"/>
                                         <constraint firstItem="gth-4I-Ba6" firstAttribute="top" secondItem="mq1-ee-OD1" secondAttribute="bottom" constant="1" id="Ign-np-JiC"/>
+                                        <constraint firstItem="vWH-gu-1bt" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="J7G-bP-SkJ"/>
+                                        <constraint firstItem="vWH-gu-1bt" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="JMe-DY-miW"/>
                                         <constraint firstItem="Ecp-FD-dH3" firstAttribute="centerY" secondItem="3an-Da-Oij" secondAttribute="centerY" id="Ltx-l8-vLF"/>
                                         <constraint firstAttribute="trailing" secondItem="gth-4I-Ba6" secondAttribute="trailing" constant="8" id="OXK-AD-JMS"/>
+                                        <constraint firstItem="mz8-Ci-hhH" firstAttribute="top" secondItem="vWH-gu-1bt" secondAttribute="bottom" id="Pme-ul-SBK"/>
                                         <constraint firstItem="3an-Da-Oij" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="V4a-qK-ue6"/>
                                         <constraint firstItem="99C-Co-psD" firstAttribute="centerY" secondItem="OT2-JY-zAi" secondAttribute="centerY" id="Wle-cQ-wxI"/>
+                                        <constraint firstAttribute="trailing" secondItem="mz8-Ci-hhH" secondAttribute="trailing" constant="8" id="Xgl-XK-el0"/>
                                         <constraint firstAttribute="trailing" secondItem="TsN-dk-e0p" secondAttribute="trailing" constant="8" id="Yux-j8-tRh"/>
                                         <constraint firstItem="3an-Da-Oij" firstAttribute="top" secondItem="OT2-JY-zAi" secondAttribute="bottom" constant="0.5" id="ZmX-uh-CkZ"/>
                                         <constraint firstItem="mq1-ee-OD1" firstAttribute="top" secondItem="3an-Da-Oij" secondAttribute="bottom" constant="17.5" id="aoc-g6-da4"/>
                                         <constraint firstItem="OT2-JY-zAi" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="hAs-Sz-S6C"/>
                                         <constraint firstItem="Ni6-1b-usJ" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="inq-24-Xvb"/>
                                         <constraint firstItem="Ecp-FD-dH3" firstAttribute="leading" secondItem="99C-Co-psD" secondAttribute="leading" id="jlx-ic-6dH"/>
+                                        <constraint firstItem="mz8-Ci-hhH" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="omQ-DE-6kY"/>
                                         <constraint firstItem="gth-4I-Ba6" firstAttribute="leading" secondItem="5Mc-6k-gA9" secondAttribute="leading" constant="8" id="p5X-aA-HhK"/>
+                                        <constraint firstItem="vWH-gu-1bt" firstAttribute="top" secondItem="gth-4I-Ba6" secondAttribute="bottom" constant="14.5" id="xQq-vZ-y9P"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -531,17 +560,24 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ijc-e3-z2A" firstAttribute="leading" secondItem="m2U-DS-Sye" secondAttribute="leading" id="2Nz-mK-gMj"/>
+                            <constraint firstAttribute="bottom" secondItem="aFA-uW-xln" secondAttribute="bottom" id="8lC-8z-gDG"/>
                             <constraint firstItem="ijc-e3-z2A" firstAttribute="top" secondItem="m2U-DS-Sye" secondAttribute="top" id="AzB-eQ-Cj5"/>
+                            <constraint firstItem="aFA-uW-xln" firstAttribute="leading" secondItem="m2U-DS-Sye" secondAttribute="leading" id="C20-qF-MPg"/>
                             <constraint firstAttribute="bottom" secondItem="HdZ-o5-UQ2" secondAttribute="bottom" id="GoL-vt-YGc"/>
                             <constraint firstItem="HdZ-o5-UQ2" firstAttribute="leading" secondItem="m2U-DS-Sye" secondAttribute="leading" id="K4r-lS-p73"/>
                             <constraint firstItem="ijc-e3-z2A" firstAttribute="trailing" secondItem="m2U-DS-Sye" secondAttribute="trailing" id="QWc-dG-RE1"/>
                             <constraint firstItem="HdZ-o5-UQ2" firstAttribute="trailing" secondItem="m2U-DS-Sye" secondAttribute="trailing" id="TjX-vj-vRr"/>
                             <constraint firstItem="HdZ-o5-UQ2" firstAttribute="top" secondItem="ijc-e3-z2A" secondAttribute="bottom" constant="-78" id="luq-ue-c01"/>
+                            <constraint firstItem="aFA-uW-xln" firstAttribute="top" secondItem="m2U-DS-Sye" secondAttribute="top" id="nfd-gW-zLx"/>
+                            <constraint firstItem="aFA-uW-xln" firstAttribute="trailing" secondItem="m2U-DS-Sye" secondAttribute="trailing" id="xy1-S3-eAc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m2U-DS-Sye"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="LZM-08-wyh"/>
                     <connections>
+                        <outlet property="descrLabel" destination="mz8-Ci-hhH" id="ywc-IF-d7Z"/>
+                        <outlet property="detailView" destination="HdZ-o5-UQ2" id="430-om-dWn"/>
+                        <outlet property="fadeBoxView" destination="aFA-uW-xln" id="p0Y-l3-yPm"/>
                         <outlet property="genresView" destination="gth-4I-Ba6" id="iFv-zR-0cD"/>
                         <outlet property="posterImage" destination="ijc-e3-z2A" id="H5c-LG-QUX"/>
                         <outlet property="rateLabel" destination="Ecp-FD-dH3" id="N0Z-Hi-P6D"/>
