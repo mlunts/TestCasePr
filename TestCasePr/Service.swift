@@ -23,7 +23,6 @@ class Service: NSObject {
                 for i in 0..<json["results"].count {
                     movies.append(Movie(id: json["results"][i]["id"].intValue, title: json["results"][i]["title"].stringValue, adult: json["results"][i]["adult"].stringValue, overview: json["results"][i]["overview"].stringValue, image: json["results"][i]["poster_path"].stringValue, releaseString: json["results"][i]["release_date"].stringValue, averageVote: json["results"][i]["vote_average"].doubleValue))
                 }
-
                 completion(movies,true)
             }
             else {
@@ -34,7 +33,7 @@ class Service: NSObject {
     }
     
     public func getMovieByID(selectedMovie : Movie, completion: @escaping (Movie,Bool) -> Void) {
-        var movie = selectedMovie
+        let movie = selectedMovie
         let parameters : [String : String] = ["api_key" : API_KEY, "region" : REGION]
         
         Alamofire.request("\(MOVIE_URL)\(movie.id)?", method: .get, parameters: parameters).responseJSON {
@@ -57,8 +56,6 @@ class Service: NSObject {
                 completion(movie,false)
             }
         }
-        
-        
     }
     
 }

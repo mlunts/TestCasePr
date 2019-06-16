@@ -10,7 +10,7 @@ import UIKit
 import SimpleAnimation
 
 class DetailsViewController: UIViewController {
-
+    
     public var selectedMovie = Movie()
     private var service = Service()
     
@@ -27,7 +27,11 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialView(check: true)
-        service.getMovieByID(selectedMovie: selectedMovie) { (movie, true) in
+        service.getMovieByID(selectedMovie: selectedMovie) { (movie, success) in
+            guard success == true else {
+                self.present(Alert().showAlert(titleText: "Oops!", messageText: "Something went wrong! Try again later."), animated: true, completion: nil)
+                return
+            }
             self.selectedMovie = movie
             self.updateUI()
             self.fadeBoxView.fadeOut()
@@ -42,38 +46,42 @@ class DetailsViewController: UIViewController {
     
     private func updateUI() {
         initialView(check: false)
-        
         genresView.reloadData()
         posterImage.image = selectedMovie.backgrImage
         titleLabel.text = selectedMovie.title
         tagLineLabel.text = selectedMovie.tagLine
         releaseDateLabel.text = selectedMovie.releaseDate.dateToString(format: "MMMM d, YYYY")
+        
         if selectedMovie.averageVote == 0 {
             rateLabel.text = "No votes yet"
         } else {
             rateLabel.text = String(selectedMovie.averageVote)
         }
+        
         if selectedMovie.overview.isEmpty {
             descrLabel.text = "No information yet"
         } else {
             descrLabel.text = selectedMovie.overview
         }
     }
-    
-
 }
 
 extension DetailsViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedMovie.genres.count
+        if selectedMovie.genres.isEmpty {
+            return 1
+        } else {
+            return selectedMovie.genres.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! GenreCollectionViewCell
-        cell.genreLabel.text = selectedMovie.genres[indexPath.row]
-        
+        if selectedMovie.genres.isEmpty {
+            cell.genreLabel.text = "No genre"
+        } else {
+            cell.genreLabel.text = selectedMovie.genres[indexPath.row]
+        }
         return cell
     }
-    
-    
 }

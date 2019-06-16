@@ -31,7 +31,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentCollectionView: UICollectionView!
     @IBOutlet weak var upcomingMoviesTable: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var viewAllNowPlayingButton: UIButton!
+    @IBOutlet weak var viewAllUpcomingButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,15 +80,25 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
         if !currentMovies.isEmpty {
             return 6
         } else {
-            return 0
+            print(currentMovies.count)
+            return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "nowMovieCell", for: indexPath) as! MovieCellCollectionViewCell
-        cell.movieTitle.text = currentMovies[indexPath.row].title
-        cell.posterImage.image = currentMovies[indexPath.row].image
-        cell.rateLabel.text = String(currentMovies[indexPath.row].averageVote)
+        if !currentMovies.isEmpty {
+            cell.movieTitle.text = currentMovies[indexPath.row].title
+            cell.posterImage.image = currentMovies[indexPath.row].image
+            cell.rateLabel.text = String(currentMovies[indexPath.row].averageVote)
+            viewAllNowPlayingButton.isHidden = false
+        } else {
+            cell.movieTitle.text = "No movies are playing right now"
+            cell.posterImage.image = UIImage(named: "no-image")
+            viewAllNowPlayingButton.isHidden = true
+            cell.noRating()
+        }
+       
         return cell
     }
     
@@ -101,14 +113,20 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         if !upcomingMovies.isEmpty {
             return 4
         } else {
-            return 0
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "upcomingCell", for: indexPath) as! UpcomingMoviesTableViewCell
-        cell.titleLabel.text = upcomingMovies[indexPath.row].title
-        cell.dateLabel.text = upcomingMovies[indexPath.row].releaseDate.dateToString(format: "dd MMM yyyy")
+        if !upcomingMovies.isEmpty {
+            cell.titleLabel.text = upcomingMovies[indexPath.row].title
+            cell.dateLabel.text = upcomingMovies[indexPath.row].releaseDate.dateToString(format: "dd MMM yyyy")
+            viewAllUpcomingButton.isHidden = false
+        } else {
+            cell.titleLabel.text = "No upcoming movies."
+            viewAllUpcomingButton.isHidden = true
+        }
         return cell
     }
     

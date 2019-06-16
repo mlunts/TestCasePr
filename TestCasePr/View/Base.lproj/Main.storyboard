@@ -91,6 +91,7 @@
                                                 <connections>
                                                     <outlet property="movieTitle" destination="J4Q-dm-rCM" id="MyM-xY-KhM"/>
                                                     <outlet property="posterImage" destination="5C8-cj-u0S" id="z9Y-6l-1Ye"/>
+                                                    <outlet property="rateIconImage" destination="CPF-K5-vHW" id="igd-FC-X6X"/>
                                                     <outlet property="rateLabel" destination="kqU-Bl-OqW" id="VM5-U4-f2T"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -129,11 +130,11 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uUd-26-cMC">
-                                        <rect key="frame" x="5" y="357" width="405" height="279"/>
+                                        <rect key="frame" x="5" y="357" width="405" height="190"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="405" id="JJo-vc-3GH"/>
-                                            <constraint firstAttribute="height" constant="279" id="khR-qS-DEv"/>
+                                            <constraint firstAttribute="height" constant="190" id="khR-qS-DEv"/>
                                         </constraints>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -216,6 +217,8 @@
                         <outlet property="currentCollectionView" destination="u9f-ii-IKj" id="b9T-Mc-tXj"/>
                         <outlet property="exploreView" destination="d3A-np-eCz" id="shM-Ls-CDd"/>
                         <outlet property="upcomingMoviesTable" destination="uUd-26-cMC" id="6gp-Ja-t62"/>
+                        <outlet property="viewAllNowPlayingButton" destination="BoP-jl-Pzh" id="436-FW-HKW"/>
+                        <outlet property="viewAllUpcomingButton" destination="bjl-nP-o5e" id="dIv-2b-A1N"/>
                         <segue destination="XIY-Zb-du0" kind="push" identifier="goToDetailsFromExplore" id="REQ-xv-plt"/>
                     </connections>
                 </viewController>
@@ -241,7 +244,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxr-8v-2Sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.97101449275362" y="-596.65178571428567"/>
+            <point key="canvasLocation" x="239" y="78"/>
         </scene>
         <!--Movies List View Controller-->
         <scene sceneID="JdD-q6-F8d">
@@ -354,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qf6-zm-ZY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960.8695652173915" y="-54.241071428571423"/>
+            <point key="canvasLocation" x="1886" y="-187"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="jwc-6a-6qP">
@@ -588,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJg-Us-3BT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430.434782608696" y="779.46428571428567"/>
+            <point key="canvasLocation" x="1886" y="592"/>
         </scene>
     </scenes>
     <resources>
@@ -596,7 +599,7 @@
         <image name="star" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rBj-cr-2LM"/>
+        <segue reference="REQ-xv-plt"/>
         <segue reference="crU-tC-gFh"/>
     </inferredMetricsTieBreakers>
 </document>
